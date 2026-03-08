@@ -1,3 +1,412 @@
+:root {
+    --color-algae-green-50: #eefbf3;
+    --color-algae-green-100: #d6f5e0;
+    --color-algae-green-200: #b1e9c6;
+    --color-algae-green-300: #8edcb0;
+    --color-algae-green-400: #49be7f;
+    --color-algae-green-500: #26a364;
+    --color-algae-green-600: #188350;
+    --color-algae-green-700: #136942;
+    --color-algae-green-800: #125336;
+    --color-algae-green-900: #10442e;
+    --color-algae-green-950: #08261a;
+
+    --color-cameo-50: #fbf6f1;
+    --color-cameo-100: #f5ebdf;
+    --color-cameo-200: #ebd3bd;
+    --color-cameo-300: #dcb18e;
+    --color-cameo-400: #cf9068;
+    --color-cameo-500: #c5744a;
+    --color-cameo-600: #b7613f;
+    --color-cameo-700: #984c36;
+    --color-cameo-800: #7b3f31;
+    --color-cameo-900: #64352a;
+    --color-cameo-950: #351a15;
+
+    --color-polo-blue-50: #f1f7fc;
+    --color-polo-blue-100: #e6f0f9;
+    --color-polo-blue-200: #d2e3f3;
+    --color-polo-blue-300: #b7cfea;
+    --color-polo-blue-400: #8eacdc;
+    --color-polo-blue-500: #809bd4;
+    --color-polo-blue-600: #677dc4;
+    --color-polo-blue-700: #5669ac;
+    --color-polo-blue-800: #48588b;
+    --color-polo-blue-900: #3f4b70;
+    --color-polo-blue-950: #252b41;
+
+    --color-shocking-50: #fbf4f7;
+    --color-shocking-100: #f8ebf1;
+    --color-shocking-200: #f3d7e5;
+    --color-shocking-300: #e9b8cf;
+    --color-shocking-400: #dc8eb0;
+    --color-shocking-500: #cd6790;
+    --color-shocking-600: #b84a71;
+    --color-shocking-700: #9e3859;
+    --color-shocking-800: #83314b;
+    --color-shocking-900: #6e2d41;
+    --color-shocking-950: #421523;
+
+    --color-gray-nurse-50: #f9fafa;
+    --color-gray-nurse-100: #f4f5f5;
+    --color-gray-nurse-200: #e3e8e5;
+    --color-gray-nurse-300: #d8dfdb;
+    --color-gray-nurse-400: #9aaca2;
+    --color-gray-nurse-500: #687c71;
+    --color-gray-nurse-600: #4b5a53;
+    --color-gray-nurse-700: #394740;
+    --color-gray-nurse-800: #222b24;
+    --color-gray-nurse-900: #151e19;
+    --color-gray-nurse-950: #080d0a;
+
+
+
+    --color-foreground: var(--color-gray-nurse-800);
+    --color-background: var(--color-gray-nurse-200);
+
+    --color-muted-foreground: var(--color-gray-nurse-500);
+
+    --color-primary: var(--color-algae-green-800);
+    --color-primary-foreground: var(--color-algae-green-50);
+
+    --color-input: var(--color-gray-nurse-100);
+
+    --color-border: var(--color-gray-nurse-300);
+    --color-shadow: rgba(8, 13, 10, 0.10);
+
+    --radius: 0.7rem;
+
+    --shadow: 0px 5px 10px var(--color-shadow);
+
+
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    padding: 2rem 3rem 2rem 3rem;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+
+    font-size: 16px;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+nav {
+    padding-top: 1rem;
+
+    & .nav-content {
+    max-width: 100rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    }
+
+    & ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+}
+
+main {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+
+    padding: 0 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    align-items: stretch;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 40rem;
+
+    margin: 0 auto;
+}
+
+input, textarea {
+    font-family: inherit;
+
+    background-color: var(--color-input);
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius);
+
+    font-size: 16px;
+
+    box-shadow: var(--shadow);
+
+    padding: 0.8rem 1rem;
+
+    color: var(--color-foreground);
+
+    &::placeholder {
+        color: var(--color-muted-foreground);
+        font-style: italic;
+    }
+
+    &:active, &:focus {
+        outline: 2px solid var(--color-algae-green-500);
+        outline-offset: 2px;
+    }
+}
+
+textarea {
+    min-height: 8rem;
+}
+
+button {
+    border: none;
+
+    font-family: inherit;
+    font-size: inherit;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    padding: 0.8rem 1rem;
+
+    &.primary {
+        background-color: var(--color-primary);
+        color: var(--color-primary-foreground);
+
+        transition: 100ms background-color ease-in-out;
+
+        &:hover {
+            background-color: var(--color-algae-green-700);
+            box-shadow: none;
+        }
+
+        &:active {
+            background-color: var(--color-algae-green-600);
+            box-shadow: none;
+        }
+
+        &:active, &:focus {
+            outline: 2px solid var(--color-algae-green-500);
+            outline-offset: 2px;
+        }
+    }
+
+    &.destructive {
+        background-color: var(--color-shocking-800);
+        color: var(--color-shocking-100);
+
+        transition: 100ms background-color ease-in-out;
+
+        &:hover {
+            background-color: var(--color-shocking-700);
+            box-shadow: none;
+        }
+
+        &:active {
+            background-color: var(--color-shocking-600);
+            box-shadow: none;
+        }
+
+        &:active, &:focus {
+            outline: 2px solid var(--color-shocking-500);
+            outline-offset: 2px;
+        }
+    }
+}
+
+form button[type="submit"] {
+    margin-top: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+h1 {
+    font-weight: black;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--color-algae-green-700);
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+.cardlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+
+}
+
+.card {
+    background-color: var(--color-gray-nurse-100);
+    border: var(--border);
+    border-radius: var(--radius);
+
+    padding: 1rem 1rem;
+
+    box-shadow: var(--shadow);
+
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.heading {
+    font-weight: 800;
+    font-size: 150%;
+    color: var(--color-foreground);
+    text-decoration: none;
+}
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & .label {
+        font-weight: 500;
+    }
+
+    & .description {
+        color: var(--color-muted-foreground);
+        font-size: 95%;
+    }
+}
+
+details.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+
+    &.primary {
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+
+        transition: 150ms background-color ease-in-out;
+
+        &:hover {
+            background-color: var(--color-gray-nurse-300);
+        }
+    }
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    width: 100%;
+
+    text-align: right;
+    padding-right: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+/* Container that sits at the top and stacks toasts if there are multiple */
+.toast-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; /* Space between multiple toasts */
+    
+    z-index: 50; /* Ensure it stays above navigation */
+    
+    /* CRITICAL: Allows you to click links on the page beneath the invisible container */
+    pointer-events: none; 
+}
+
+/* Hide the actual checkbox completely */
+.toast-toggle {
+    display: none;
+}
+
+/* THE MAGIC LINE: 
+  When the hidden checkbox is checked, hide the adjacent .flash-content 
+*/
+.toast-toggle:checked + .flash-content {
+    display: none;
+}
+
+/* Your toast styling */
+.flash-content {
+    pointer-events: auto; /* Re-enable clicks so you can actually click the close button */
+    
+    width: 100%;
+    max-width: 30rem;
+    padding: 1rem 1.5rem;
+    
+    background-color: var(--color-gray-nurse-100);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:first-of-type {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+}
+
+/* Style the close "button" */
+.toast-close {
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-muted-foreground);
+    transition: color 150ms ease;
+}
+
+.toast-close:hover {
+    color: var(--color-shocking-600); /* Uses your red/pink variable */
 }

@@ -1,24 +1,41 @@
 <!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{% block title %}{% endblock %} - Saavu</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-  <h1>Saavu</h1>
+    <div class="nav-content">
+  <a href="/" class="heading">Saavu</a>
   <ul>
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    <li>
+        <details class="dropdown">
+            <summary class="primary">Welcome, {{ g.user['username'] }}!</summary>
+            <ul class="dropdown-content">
+                <li><a href="#">My Events</a></li>
+                <li><a href="#">Account</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+            </ul>
+        </details>
+    <li>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
     {% endif %}
   </ul>
+    </div>
 </nav>
-<section class="content">
+<main>
+    <div class="toast-container">
+    {% for message in get_flashed_messages() %}
+      <input type="checkbox" id="toast-{{ loop.index }}" class="toast-toggle">
+      
+      <div class="flash-content">
+        <span>{{ message }}</span>
+        <label for="toast-{{ loop.index }}" class="toast-close">&times;</label>
+      </div>
+    {% endfor %}
+  </div>
   <header>
     {% block header %}{% endblock %}
   </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
   {% block content %}{% endblock %}
-</section>
+</main>
