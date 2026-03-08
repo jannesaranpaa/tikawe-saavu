@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Features</h1>
+{% endblock %}
+
+{% block content %}
+    <form>
+        <label>
+            <span>Select a category</span>
+            <select>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+    </form>
+{% endblock %}
