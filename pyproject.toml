@@ -1,0 +1,9 @@
+[project]
+name = "tikawe-saavu"
+version = "0.0.1"
+description = "A program for collecting accessibility information about events"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "flask>=3.1.3",
+]
