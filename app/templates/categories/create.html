@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Create a new category</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label class="field">
+            <span class="label">Name</span>
+            <input name="name" type="text" placeholder="Physical accessibility" />
+        </label>
+
+        <label class="field">
+            <span class="label">Description</span>
+            <textarea name="description" placeholder="What different physical properties does the event location have that affect the accessibility of the event"></textarea>
+            <span class="description">
+                Explain what are the common aspects of the features in this group
+            </span>
+        </label>
+
+        <button type="submit" class="primary">
+            Add a new category
+        </button>
+
+    </form>
+{% endblock %}

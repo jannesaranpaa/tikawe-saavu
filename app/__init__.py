@@ -30,4 +30,12 @@ def create_app(test_config=None):
 
     app.register_blueprint(index.bp)
 
+    from . import features
+
+    app.register_blueprint(features.bp)
+
+    from . import categories
+
+    app.register_blueprint(categories.bp)
+
     return app
