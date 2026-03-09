@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Categories</h1>
+{% endblock %}
+
+{% block content %}
+    <ul class="cardlist">
+        {% for category in categories %}
+        <li class="card">
+            <h2><a href="{{ url_for('categories.edit', id=category.id) }}">{{ category.name }}</a></h2>
+            <p>{{ category.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a class="button" href="/categories/new">
+        Create a new category
+    </a>
+{% endblock %}
