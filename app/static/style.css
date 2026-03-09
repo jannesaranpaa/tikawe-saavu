@@ -144,7 +144,7 @@ form {
     margin: 0 auto;
 }
 
-input, textarea {
+input, textarea, select {
     font-family: inherit;
 
     background-color: var(--color-input);

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Edit a feature</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label class="field">
+            <span class="label">Name</span>
+            <input name="name" type="text" value="{{ feature['name'] }}" placeholder="Physical accessibility" />
+        </label>
+
+        <label class="field">
+            <span class="label">Description</span>
+            <textarea name="description" placeholder="What different physical properties does the event location have that affect the accessibility of the event">{{ feature['description'] }}</textarea>
+            <span class="description">
+                Explain what are the common aspects of the features in this group
+            </span>
+        </label>
+
+        <label class="field">
+            <span class="label">Category</span>
+            <select name="category_id" required>
+                <option value="">-- Select a Category --</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}" 
+                        {% if cat.id == feature.category_id %}selected{% endif %}>
+                        {{ cat.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <button type="submit" class="primary">
+            Save changes
+        </button>
+
+    </form>
+
+    <form action="{{ url_for('features.delete', id=feature['id']) }}" method="post">
+        <h2 style="margin-top: 2rem;">Danger Zone</h2>
+        <p class="description">
+            Deleting this feature will also delete all features associated with it.
+        </p>
+
+        <button style="margin-top: 0;" class="destructive" type="submit" onclick="return confirm('Are you absolutely sure you want to delete this feature?');">
+            Delete feature
+        </button>
+    </form>
+{% endblock %}

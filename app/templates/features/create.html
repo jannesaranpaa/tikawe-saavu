@@ -1,17 +1,37 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>Features</h1>
+  <h1>Create a new feature</h1>
 {% endblock %}
 
 {% block content %}
-    <form>
-        <label>
-            <span>Select a category</span>
-            <select>
-                {% for category in categories %}
-                <option value="{{ category.id }}">{{ category.name }}</option>
+    <form method="post">
+        <label class="field">
+            <span class="label">Name</span>
+            <input name="name" type="text" placeholder="Accessible doorways" />
+        </label>
+
+        <label class="field">
+            <span class="label">Description</span>
+            <textarea name="description" placeholder="The doorways of the location are at minimum 90 cm wide."></textarea>
+            <span class="description">
+                Explain what is required for the feature to be fulfilled.
+            </span>
+        </label>
+
+        <label class="field">
+            <span class="label">Category</span>
+            <select name="category_id" required>
+                <option value="">-- Select a Category --</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
                 {% endfor %}
             </select>
+        </label>
+
+        <button type="submit" class="primary">
+            Add a new feature
+        </button>
+
     </form>
 {% endblock %}

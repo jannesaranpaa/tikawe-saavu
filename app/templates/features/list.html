@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Features</h1>
+{% endblock %}
+
+{% block content %}
+    {% for category_name, group in features|groupby('category_name') %}
+        
+        <section class="feature-group" style="margin-bottom: 1rem;">
+            <h2 style="margin-bottom: 1rem;">
+                {{ category_name }}
+            </h2>
+            
+            <ul class="cardlist">
+                {% for feature in group %}
+                <li class="card">
+                    <h3>
+                        <a href="{{ url_for('features.edit', id=feature.id) }}">
+                            {{ feature.name }}
+                        </a>
+                    </h3>
+                    <p>{{ feature.description }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    {% else %}
+        <p class="description">No features have been created yet.</p>
+    {% endfor %}
+
+    <a class="button primary" href="{{ url_for('features.create') }}">
+        Create a new feature
+    </a>
+{% endblock %}
