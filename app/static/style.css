@@ -99,24 +99,29 @@ body {
 }
 
 nav {
-    padding-top: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+
+    background-color: var(--color-gray-nurse-100);
+
+    margin-bottom: 1rem;
 
     & .nav-content {
-    max-width: 100rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
+        max-width: 100rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
     }
 
     & ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 main {
@@ -302,6 +307,12 @@ ul, ol {
 details.dropdown {
     position: relative;
     display: inline-block;
+
+    &:open summary {
+        background-color: var(--color-gray-nurse-200);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 
 summary {
@@ -317,7 +328,7 @@ summary {
         transition: 150ms background-color ease-in-out;
 
         &:hover {
-            background-color: var(--color-gray-nurse-300);
+            background-color: var(--color-gray-nurse-200);
         }
     }
 }
@@ -339,6 +350,13 @@ summary::-webkit-details-marker {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    background-color: var(--color-gray-nurse-200);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
 
     & a {
         text-decoration: none;
