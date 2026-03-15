@@ -307,6 +307,12 @@ ul, ol {
 details.dropdown {
     position: relative;
     display: inline-block;
+
+    &:open summary {
+        background-color: var(--color-gray-nurse-200);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 
 summary {
@@ -322,7 +328,7 @@ summary {
         transition: 150ms background-color ease-in-out;
 
         &:hover {
-            background-color: var(--color-gray-nurse-300);
+            background-color: var(--color-gray-nurse-200);
         }
     }
 }
@@ -344,6 +350,13 @@ summary::-webkit-details-marker {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    background-color: var(--color-gray-nurse-200);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
 
     & a {
         text-decoration: none;
