@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Events</h1>
+{% endblock %}
+
+{% block content %}
+    <ul class="cardlist">
+        {% for event in events %}
+        <li class="card">
+            <h2><a href="{{ url_for('events.view', slug=event.slug) }}">{{ event.name }}</a></h2>
+            <p>{{ event.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a class="button" href="/events/new">
+        Create a new event
+    </a>
+{% endblock %}

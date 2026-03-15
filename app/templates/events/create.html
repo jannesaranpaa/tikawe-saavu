@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Create a new event</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label class="field">
+            <span class="label">Name</span>
+            <input name="name" type="text" placeholder="Seminar on queer identities in the Old Testament" required />
+        </label>
+
+        <label class="field">
+            <span class="label">Description</span>
+            <textarea name="description" placeholder="What kind of different sexualities can we find..."></textarea>
+        </label>
+
+        <fieldset>
+            <legend class="label">Features</legend>
+            {% for feature in features %}
+            <div class="feature-item">
+                <label class="chip feature">
+                    <input type="checkbox" name="feature_ids" value="{{ feature.id }}" />
+                    <span class="name">{{ feature.name }}</span>
+                    <span class="description">{{ feature.description }}</span>
+                </label>
+                
+                <div class="note-input">
+                    <textarea name="feature_note_{{ feature.id }}" placeholder="How is this feature fulfilled?"></textarea>
+                </div>
+            </div>
+            {% endfor %}
+        </fieldset>
+
+        <button type="submit" class="primary">
+            Add a new event
+        </button>
+
+    </form>
+{% endblock %}

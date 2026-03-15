@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% endblock %}
+
+{% block content %}
+    <div style="margin-bottom: 2.5rem;">
+        <h1 style="margin-top: 0; margin-bottom: 1rem;">{{ event['name'] }}</h1>
+        {% if event['description'] %}
+            <p class="description" style="font-size: 1.1rem; line-height: 1.6; max-width: 60rem;">
+                {{ event['description'] }}
+            </p>
+        {% endif %}
+    </div>
+
+    <h2 class="heading" style="margin-bottom: 1.5rem;">Event Features</h2>
+
+    {% if event['features'] %}
+        <div class="cardlist">
+            {% for feature in event['features'] %}
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">{{ feature['name'] }}</h3>
+                        
+                        {% if feature['category']['name'] %}
+                            <span style="font-size: 0.8rem; background-color: var(--color-gray-nurse-300); color: var(--color-gray-nurse-800); padding: 0.2rem 0.6rem; border-radius: 1rem; font-weight: 500;">
+                                {{ feature['category']['name'] }}
+                            </span>
+                        {% endif %}
+                    </div>
+                    
+                    <p class="description" style="margin-bottom: 1rem;">
+                        {{ feature['description'] }}
+                    </p>
+
+                    {% if feature['notes'] %}
+                        <div style="background-color: var(--color-algae-green-50); border-left: 3px solid var(--color-algae-green-500); padding: 0.8rem 1rem; border-radius: 0 var(--radius) var(--radius) 0;">
+                            <span class="label" style="display: block; font-size: 0.85rem; text-transform: uppercase; color: var(--color-algae-green-800); margin-bottom: 0.2rem; font-weight: 700;">
+                                Notes
+                            </span>
+                            <span style="color: var(--color-algae-green-950); line-height: 1.4;">
+                                {{ feature['notes'] }}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card" style="text-align: center; padding: 3rem 1rem; background-color: transparent; border: 2px dashed var(--color-border); box-shadow: none;">
+            <p class="description" style="margin: 0;">No specific features have been detailed for this event yet.</p>
+        </div>
+    {% endif %}
+
+    <div>
+        <a href="{{ url_for('events.edit', slug=event['slug']) }}">
+            Edit this event
+        </a>
+    </div>
+
+{% endblock %}

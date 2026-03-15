@@ -38,4 +38,8 @@ def create_app(test_config=None):
 
     app.register_blueprint(categories.bp)
 
+    from . import events
+
+    app.register_blueprint(events.bp)
+
     return app
