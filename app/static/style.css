@@ -99,7 +99,12 @@ body {
 }
 
 nav {
-    padding-top: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+
+    background-color: var(--color-gray-nurse-100);
+
+    margin-bottom: 1rem;
 
     & .nav-content {
     max-width: 100rem;
