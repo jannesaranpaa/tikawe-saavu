@@ -516,3 +516,29 @@ legend.label {
     display: block;
     animation: fadeIn 200ms ease-in-out;
 }
+
+.chips {
+    display: flex;
+    gap: 1rem;
+
+    .chip {
+        background-color: var(--color-primary);
+        color: var(--color-primary-foreground);
+
+        cursor: pointer;
+        text-decoration: none;
+            
+        border: none;
+
+        font-family: inherit;
+        font-size: inherit;
+
+        border-radius: var(--radius);
+
+        box-shadow: var(--shadow);
+
+        padding: 0.8rem 1rem;
+
+    }
+}
+
