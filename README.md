@@ -15,14 +15,54 @@ tietoja sen omilla nettisivuilla tai sosiaalisen median julkaisuissa.
       huomioita
 - [ ] Käyttäjä voi listata omat tapahtumansa
 
-## Sovelluksen asennus
+## Sovelluksen asennus ja testaaminen
 
-Asenna `flask`-kirjasto:
+### Asentaminen
+
+Kloonaa kirjasto itsellesi ja siirry repositorioon
+```shell
+git clone https://github.com/jannesaranpaa/tikawe-saavu.git
+cd tikawe-saavu
+```
+
+Asenna tarvittavat python-paketit
+```shell
+pip install -r requirements.txt
+```
+
+tai vaihtoehtoisesti
 ```shell
 pip install flask
 ```
 
-Voit käynnistää sovelluksen näin:
+Alusta tietokanta
+```shell
+flask --app app init-db
+```
+
+Käynnistä sovellus
 ```shell
 flask run
 ```
+
+Nyt voit avata sovelluksen osoitteessa [127.0.0.1:5000](http://127.0.0.1:5000/)
+
+### Testaaminen
+
+1. Rekisteröi käyttäjä osoitteessa
+   [auth/register](http://127.0.0.1:5000/auth/register)
+2. Kirjaudu sisään osoitteessa [auth/login](http://127.0.0.1:5000/auth/login)
+   (sinut on uudelleenohjattu tälle sivulle rekisteröitymisen jälkeen)
+3. Hallitse kategorioita osoitteessa [categories/](http://127.0.0.1:5000/categories)
+    - Voit luoda, muokata ja poistaa kategorioita
+    - Kategorioita voisivat olla esimerkiksi _'Fyysinen esteettömyys'_ ja
+      _'Kognitiivinen esteettömyys'_
+4. Hallitse piirteitä osoitteessa [features/](http://127.0.0.1:5000/features)
+    - Voit luoda, muokata ja poistaa piirteitä
+    - Piirteitä voivat olla esimerkiksi _'Selkokieliset esittelytekstit'_ ja
+      _'Riittävän leveät oviaukot'_
+5. Hallitse tapahtumia osoitteessa [events/](http://127.0.0.1:5000/events)
+    - Voit luoda, muokata ja poistaa tapahtumia
+    - Tapahtumalle voit valita esteettömyysominaisuuksia, ja antaa niille
+      kommentteja
+
