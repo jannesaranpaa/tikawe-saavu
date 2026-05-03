@@ -6,6 +6,7 @@
 
 {% block content %}
     <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <label class="field">
             <span class="label">Name</span>
             <input name="name" type="text" value="{{ event['name'] }}" placeholder="Physical accessibility" required />
@@ -43,7 +44,8 @@
 
     </form>
 
-    <form action="{{ url_for('events.delete', id=event['id']) }}" method="post">
+    <form action="{{ url_for('remove_event', event_id=event['id']) }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <h2 style="margin-top: 2rem;">Danger Zone</h2>
         <p class="description">
             Deleting this event will also delete all information associated with it.

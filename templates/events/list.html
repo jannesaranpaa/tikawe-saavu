@@ -8,13 +8,13 @@
     <ul class="cardlist">
         {% for event in events %}
         <li class="card">
-            <h2><a href="{{ url_for('events.view', slug=event.slug) }}">{{ event.name }}</a></h2>
+            <h2><a href="{{ url_for('view_event', slug=event.slug) }}">{{ event.name }}</a></h2>
             <p>{{ event.description }}</p>
         </li>
         {% endfor %}
     </ul>
 
-    <a class="button" href="/events/new">
+    <a class="button" href="/new_event">
         Create a new event
     </a>
 {% endblock %}

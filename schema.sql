@@ -11,7 +11,7 @@ DROP TRIGGER IF EXISTS update_events_timestamp;
 DROP TRIGGER IF EXISTS update_event_features_timestamp;
 
 CREATE TABLE users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
     hash TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -19,7 +19,7 @@ CREATE TABLE users(
 );
 
 CREATE TABLE categories(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -27,18 +27,17 @@ CREATE TABLE categories(
 );
 
 CREATE TABLE features(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     description TEXT,
     category_id INTEGER,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
     FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE events(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     description TEXT,
@@ -54,7 +53,6 @@ CREATE TABLE event_features(
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
     PRIMARY KEY (event_id, feature_id),
     FOREIGN KEY(event_id) REFERENCES events(id) ON DELETE CASCADE,
     FOREIGN KEY(feature_id) REFERENCES features(id) ON DELETE CASCADE

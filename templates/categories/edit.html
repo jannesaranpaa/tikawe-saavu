@@ -6,6 +6,7 @@
 
 {% block content %}
     <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <label class="field">
             <span class="label">Name</span>
             <input name="name" type="text" value="{{ category['name'] }}" placeholder="Physical accessibility" />
@@ -25,7 +26,8 @@
 
     </form>
 
-    <form action="{{ url_for('categories.delete', id=category['id']) }}" method="post">
+    <form action="{{ url_for('remove_category', category_id=category['id']) }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <h2 style="margin-top: 2rem;">Danger Zone</h2>
         <p class="description">
             Deleting this category will also delete all features associated with it.

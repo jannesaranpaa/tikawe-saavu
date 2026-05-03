@@ -6,6 +6,7 @@
 
 {% block content %}
     <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         <label class="field">
             <span class="label">Name</span>
             <input name="name" type="text" placeholder="Accessible doorways" />

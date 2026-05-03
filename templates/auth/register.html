@@ -6,6 +6,7 @@
 
 {% block content %}
   <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     <label class="field">
       <span class="label">Username</span>
       <input name="username" id="username" type="text" placeholder="your_username" required />
@@ -23,6 +24,6 @@
       Register
     </button>
 
-    <a href="/auth/login">Login with an existing user</a>
+    <a href="/login">Login with an existing user</a>
   </form>
 {% endblock %}

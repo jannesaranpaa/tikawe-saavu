@@ -13,12 +13,12 @@
             <ul class="dropdown-content">
                 <li><a href="#">My Events</a></li>
                 <li><a href="#">Account</a></li>
-                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             </ul>
         </details>
     </li>
     {% else %}
-    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+    <li><a href="{{ url_for('login') }}">Login</a></li>
     {% endif %}
   </ul>
     </div>

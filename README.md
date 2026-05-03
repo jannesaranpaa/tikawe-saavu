@@ -11,9 +11,6 @@ tietoja sen omilla nettisivuilla tai sosiaalisen median julkaisuissa.
   (_feature_) ja niiden kategorioita (_category_) ja luomaan tapahtumia (_event_)
     - [ ] Käyttäjä voi muokata vain itse luomiaan tapahtumia
 - [x] Tapahtuman esteettömyysominaisuuksiin voi lisätä huomioita
-    - [ ] Myös sellaisiin ominaisuuksiin, jotka eivät toteudu, voi lisätä
-      huomioita
-- [ ] Käyttäjä voi listata omat tapahtumansa
 
 ## Sovelluksen asennus ja testaaminen
 
@@ -21,7 +18,7 @@ tietoja sen omilla nettisivuilla tai sosiaalisen median julkaisuissa.
 
 Kloonaa kirjasto itsellesi ja siirry repositorioon
 ```shell
-git clone https://github.com/jannesaranpaa/tikawe-saavu.git
+git clone [https://github.com/jannesaranpaa/tikawe-saavu.git](https://github.com/jannesaranpaa/tikawe-saavu.git)
 cd tikawe-saavu
 ```
 
@@ -37,7 +34,7 @@ pip install flask
 
 Alusta tietokanta
 ```shell
-flask --app app init-db
+sqlite3 database.db < schema.sql
 ```
 
 Käynnistä sovellus
@@ -50,8 +47,8 @@ Nyt voit avata sovelluksen osoitteessa [127.0.0.1:5000](http://127.0.0.1:5000/)
 ### Testaaminen
 
 1. Rekisteröi käyttäjä osoitteessa
-   [auth/register](http://127.0.0.1:5000/auth/register)
-2. Kirjaudu sisään osoitteessa [auth/login](http://127.0.0.1:5000/auth/login)
+   [/register](http://127.0.0.1:5000/register)
+2. Kirjaudu sisään osoitteessa [/login](http://127.0.0.1:5000/login)
    (sinut on uudelleenohjattu tälle sivulle rekisteröitymisen jälkeen)
 3. Hallitse kategorioita osoitteessa [categories/](http://127.0.0.1:5000/categories)
     - Voit luoda, muokata ja poistaa kategorioita
