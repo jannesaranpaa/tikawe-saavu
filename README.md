@@ -9,7 +9,8 @@ tietoja sen omilla nettisivuilla tai sosiaalisen median julkaisuissa.
 - [x] Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 - [x] Käyttäjä pystyy lisäämään, muokkaamaan ja poistamaan ominaisuuksia
   (_feature_) ja niiden kategorioita (_category_) ja luomaan tapahtumia (_event_)
-    - [ ] Käyttäjä voi muokata vain itse luomiaan tapahtumia
+    - [x] Käyttäjä voi muokata vain itse luomiaan tapahtumia
+    - [x] Käyttäjä voi tarkastella omia tapahtumiaan ja nähdä niiden määrän
 - [x] Tapahtuman esteettömyysominaisuuksiin voi lisätä huomioita
 
 ## Sovelluksen asennus ja testaaminen
