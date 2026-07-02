@@ -4,23 +4,22 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
     <div class="nav-content">
-  <a href="/" class="heading">Saavu</a>
-  <ul>
-    {% if g.user %}
-    <li>
-        <details class="dropdown">
-            <summary class="primary">Welcome, {{ g.user['username'] }}!</summary>
-            <ul class="dropdown-content">
-                <li><a href="#">My Events</a></li>
-                <li><a href="#">Account</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            </ul>
-        </details>
-    </li>
-    {% else %}
-    <li><a href="{{ url_for('login') }}">Login</a></li>
-    {% endif %}
-  </ul>
+        <a href="/" class="heading">Saavu</a>
+        <ul>
+            {% if session.user_id %}
+            <li>
+                <details class="dropdown">
+                    <summary class="primary">Welcome, {{ session.username }}!</summary>
+                    <ul class="dropdown-content">
+                        <li><a href="{{ url_for('profile') }}">My Profile & Stats</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    </ul>
+                </details>
+            </li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
     </div>
 </nav>
 <main>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>My Profile ({{ session['username'] }})</h1>
+{% endblock %}
+
+{% block content %}
+    <section class="stats-section" style="margin-bottom: 30px;">
+        <h2>My Statistics</h2>
+        <ul>
+            <li><strong>Categories created:</strong> {{ data.categories_count }}</li>
+            <li><strong>Features created:</strong> {{ data.features_count }}</li>
+            <li><strong>Events created:</strong> {{ data.events_count }}</li>
+        </ul>
+    </section>
+
+    <section class="user-items-section">
+        <h2>My Events</h2>
+        {% if data.events %}
+            <ul class="cardlist">
+                {% for event in data.events %}
+                <li class="card">
+                    <h3><a href="{{ url_for('view_event', slug=event.slug) }}">{{ event.name }}</a></h3>
+                    <p>{{ event.description }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You haven't created any events yet.</p>
+            <a class="button" href="/new_event">Create your first event</a>
+        {% endif %}
+    </section>
+{% endblock %}

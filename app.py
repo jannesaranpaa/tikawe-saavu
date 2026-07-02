@@ -417,3 +417,12 @@ def remove_event(event_id):
 
     events.remove_event(event_id)
     return redirect("/events")
+
+
+@app.route("/profile")
+def profile():
+    require_login()
+
+    profile_data = users.get_user_profile_data(session["user_id"])
+
+    return render_template("auth/profile.html", data=profile_data)
