@@ -25,6 +25,12 @@ def get_events():
     return db.query(sql)
 
 
+def get_event_by_id(event_id):
+    sql = "SELECT id, user_id FROM events WHERE id = ?"
+    result = db.query(sql, [event_id])
+    return result[0] if result else None
+
+
 def get_event(slug):
     sql = """SELECT
              e.id, e.name, e.slug, e.description, e.user_id, e.created_at,

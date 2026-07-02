@@ -366,11 +366,12 @@ def remove_event(event_id):
 
     # FIX: Check if user has rights to remove the event
 
-    event = events.get_event(event_id)
+    event = events.get_event_by_id(event_id)
     if not event:
         abort(404)
 
     if event["user_id"] != session["user_id"]:
         abort(403)
+
     events.remove_event(event_id)
     return redirect("/events")
