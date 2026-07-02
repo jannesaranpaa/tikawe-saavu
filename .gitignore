@@ -9,3 +9,5 @@ instance/
 
 # Virtual environments
 .venv
+
+database.db
