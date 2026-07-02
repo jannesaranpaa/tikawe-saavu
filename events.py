@@ -62,9 +62,9 @@ def get_all_features_with_categories():
     return db.query(sql)
 
 
-def add_event(name, slug, description, selected_features):
-    sql = "INSERT INTO events (name, slug, description) VALUES (?, ?, ?)"
-    db.execute(sql, [name, slug, description])
+def add_event(name, slug, description, selected_features, user_id):
+    sql = "INSERT INTO events (name, slug, description, user_id) VALUES (?, ?, ?, ?)"
+    db.execute(sql, [name, slug, description, user_id])
     event_id = db.last_insert_id()
 
     sql = "INSERT INTO event_features (event_id, feature_id, description) VALUES (?, ?, ?)"

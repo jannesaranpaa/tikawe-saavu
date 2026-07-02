@@ -107,7 +107,7 @@ def new_category():
             flash("Name is required")
             return redirect("/new_category")
 
-        categories.add_category(name, description)
+        categories.add_category(name, description, session.get("user_id"))
         flash("Category created!")
         return redirect("/categories")
 
@@ -119,6 +119,10 @@ def edit_category(category_id):
     category = categories.get_category(category_id)
     if not category:
         abort(404)
+
+    # FIX: Check if user has rights to edit the category
+    if category["user_id"] != session["user_id"]:
+        abort(403)
 
     if request.method == "GET":
         return render_template("categories/edit.html", category=category)
@@ -141,6 +145,16 @@ def edit_category(category_id):
 def remove_category(category_id):
     require_login()
     check_csrf()
+
+    # FIX: Check if user has rights to edit the category
+
+    category = categories.get_category(category_id)
+    if not category:
+        abort(404)
+
+    if category["user_id"] != session["user_id"]:
+        abort(403)
+
     categories.remove_category(category_id)
     flash("Category deleted")
     return redirect("/categories")
@@ -179,7 +193,7 @@ def new_feature():
             return redirect("/new_feature")
 
         try:
-            features.add_feature(name, description, category_id)
+            features.add_feature(name, description, category_id, session.get("user_id"))
             flash("Feature created!")
             return redirect("/features")
         except sqlite3.IntegrityError:
@@ -194,6 +208,11 @@ def edit_feature(feature_id):
     feature = features.get_feature(feature_id)
     if not feature:
         abort(404)
+
+    # FIX: Check if user has rights to edit the feature
+
+    if feature["user_id"] != session["user_id"]:
+        abort(403)
 
     all_categories = categories.get_categories()
 
@@ -233,6 +252,16 @@ def edit_feature(feature_id):
 def remove_feature(feature_id):
     require_login()
     check_csrf()
+
+    # FIX: Check if user has rights to remove the feature
+
+    feature = features.get_feature(feature_id)
+    if not feature:
+        abort(404)
+
+    if feature["user_id"] != session["user_id"]:
+        abort(403)
+
     features.remove_feature(feature_id)
     flash("Feature deleted")
     return redirect("/features")
@@ -277,7 +306,9 @@ def new_event():
             note_text = request.form.get(input_name, "")
             selected_features.append((feature_id, note_text))
 
-        events.add_event(name, slug, description, selected_features)
+        events.add_event(
+            name, slug, description, selected_features, session.get("user_id")
+        )
         return redirect("/events")
 
 
@@ -288,6 +319,11 @@ def edit_event(slug):
     event = events.get_event(slug)
     if not event:
         abort(404)
+
+    # FIX: Check if user has rights to edit the event
+
+    if event["user_id"] != session["user_id"]:
+        abort(403)
 
     all_features = features.get_features()
 
@@ -327,5 +363,14 @@ def edit_event(slug):
 def remove_event(event_id):
     require_login()
     check_csrf()
+
+    # FIX: Check if user has rights to remove the event
+
+    event = events.get_event(event_id)
+    if not event:
+        abort(404)
+
+    if event["user_id"] != session["user_id"]:
+        abort(403)
     events.remove_event(event_id)
     return redirect("/events")

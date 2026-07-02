@@ -12,9 +12,9 @@ def get_category(category_id):
     return result[0] if result else None
 
 
-def add_category(name, description):
-    sql = "INSERT INTO categories (name, description) VALUES (?, ?)"
-    db.execute(sql, [name, description])
+def add_category(name, description, user_id):
+    sql = "INSERT INTO categories (name, description, user_id) VALUES (?, ?, ?)"
+    db.execute(sql, [name, description, user_id])
 
 
 def update_category(category_id, name, description):

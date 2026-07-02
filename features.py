@@ -15,9 +15,9 @@ def get_feature(feature_id):
     return result[0] if result else None
 
 
-def add_feature(name, description, category_id):
-    sql = "INSERT INTO features (name, description, category_id) VALUES (?, ?, ?)"
-    db.execute(sql, [name, description, category_id])
+def add_feature(name, description, category_id, user_id):
+    sql = "INSERT INTO features (name, description, category_id, user_id) VALUES (?, ?, ?, ?)"
+    db.execute(sql, [name, description, category_id, user_id])
 
 
 def update_feature(feature_id, name, description, category_id):

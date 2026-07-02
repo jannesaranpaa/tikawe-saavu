@@ -23,7 +23,10 @@ CREATE TABLE categories(
     name TEXT NOT NULL,
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE features(
@@ -33,7 +36,10 @@ CREATE TABLE features(
     category_id INTEGER,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE
+    user_id INTEGER NOT NULL,
+
+    FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE,
+    FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE events(
@@ -43,6 +49,7 @@ CREATE TABLE events(
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
     user_id INTEGER,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE SET NULL
 );
