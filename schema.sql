@@ -100,3 +100,5 @@ BEGIN
     UPDATE event_features SET updated_at = CURRENT_TIMESTAMP 
     WHERE event_id = OLD.event_id AND feature_id = OLD.feature_id;
 END;
+
+CREATE INDEX idx_events_slug ON events (slug);
