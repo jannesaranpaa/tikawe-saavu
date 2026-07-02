@@ -63,4 +63,8 @@ Nyt voit avata sovelluksen osoitteessa [127.0.0.1:5000](http://127.0.0.1:5000/)
     - Voit luoda, muokata ja poistaa tapahtumia
     - Tapahtumalle voit valita esteettömyysominaisuuksia, ja antaa niille
       kommentteja
+6. Tarkastele tilastoja osoitteessa [profile/](http://127.0.0.1:5000/profile)
+    - Löydät sivun myös klikkaamalla käyttäjänimeäsi yläpalkista
+    - Näet yhteenvedon luomiesi kategorioiden, piirteiden ja tapahtumien
+      määristä, sekä listauksen itse lisäämistäsi tapahtumista
 
