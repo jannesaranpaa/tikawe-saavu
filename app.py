@@ -293,8 +293,18 @@ def remove_feature(feature_id):
 
 @app.route("/events")
 def list_events():
-    all_events = events.get_events()
-    return render_template("events/list.html", events=all_events)
+    query = request.args.get("query", "").strip()
+
+    if len(query) > 100:
+        flash("Search query is too long (max 100 characters)")
+        return redirect("/events")
+
+    if query:
+        all_events = events.search_events(query)
+    else:
+        all_events = events.get_events()
+
+    return render_template("events/list.html", events=all_events, query=query)
 
 
 @app.route("/event/<slug>")

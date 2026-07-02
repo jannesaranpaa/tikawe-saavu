@@ -5,11 +5,24 @@
 {% endblock %}
 
 {% block content %}
+    <form action="/events" method="GET" class="search-form" style="margin-bottom: 20px;">
+        <input type="text" name="query" value="{{ query }}" placeholder="Search events..." style="padding: 5px; width: 250px;">
+        <button type="submit" class="button">Search</button>
+        
+        {% if query %}
+            <a href="/events" style="margin-left: 10px; color: gray;">Clear search</a>
+        {% endif %}
+    </form>
+
     <ul class="cardlist">
         {% for event in events %}
         <li class="card">
             <h2><a href="{{ url_for('view_event', slug=event.slug) }}">{{ event.name }}</a></h2>
             <p>{{ event.description }}</p>
+        </li>
+        {% else %}
+        <li class="card">
+            <p>No events found.</p>
         </li>
         {% endfor %}
     </ul>

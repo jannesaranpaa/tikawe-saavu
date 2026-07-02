@@ -93,3 +93,12 @@ def update_event(event_id, name, description, selected_features):
 def remove_event(event_id):
     sql = "DELETE FROM events WHERE id = ?"
     db.execute(sql, [event_id])
+
+
+def search_events(query):
+    sql = """SELECT id, name, slug, description 
+             FROM events 
+             WHERE name LIKE ? OR description LIKE ? 
+             ORDER BY created_at DESC"""
+
+    return db.query(sql, [f"%{query}%", f"%{query}%"])
