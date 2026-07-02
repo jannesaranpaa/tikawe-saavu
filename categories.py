@@ -7,7 +7,7 @@ def get_categories():
 
 
 def get_category(category_id):
-    sql = "SELECT * FROM categories WHERE id = ?"
+    sql = "SELECT id, name, description, user_id FROM categories WHERE id = ?"
     result = db.query(sql, [category_id])
     return result[0] if result else None
 

@@ -10,7 +10,9 @@ def get_features():
 
 
 def get_feature(feature_id):
-    sql = "SELECT * FROM features WHERE id = ?"
+    sql = (
+        "SELECT id, name, description, category_id, user_id FROM features WHERE id = ?"
+    )
     result = db.query(sql, [feature_id])
     return result[0] if result else None
 
