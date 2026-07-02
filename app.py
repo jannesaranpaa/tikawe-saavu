@@ -47,6 +47,14 @@ def register():
             flash("Password is required")
             return redirect("/register")
 
+        if len(username) > 50:
+            flash("Name is too long (max 50 characters)")
+            return redirect("/register")
+
+        if len(password) < 8:
+            flash("Password is too short (min 8 characters)")
+            return redirect("/register")
+
         try:
             users.create_user(username, password)
         except sqlite3.IntegrityError:
@@ -105,6 +113,14 @@ def new_category():
 
         if not name:
             flash("Name is required")
+            return redirect("/new_category")
+
+        if len(name) > 100:
+            flash("Name is too long (max 100 characters)")
+            return redirect("/new_category")
+
+        if len(description) > 500:
+            flash("Description is too long (max 500 characters)")
             return redirect("/new_category")
 
         categories.add_category(name, description, session.get("user_id"))
@@ -190,6 +206,14 @@ def new_feature():
             return redirect("/new_feature")
         if not category_id:
             flash("A category must be selected")
+            return redirect("/new_feature")
+
+        if len(name) > 100:
+            flash("Name is too long (max 100 characters)")
+            return redirect("/new_feature")
+
+        if len(description) > 500:
+            flash("Description is too long (max 500 characters)")
             return redirect("/new_feature")
 
         try:
@@ -297,6 +321,14 @@ def new_event():
 
         if not name:
             flash("Name is required")
+            return redirect("/new_event")
+
+        if len(name) > 100:
+            flash("Name is too long (max 100 characters)")
+            return redirect("/new_event")
+
+        if len(description) > 500:
+            flash("Description is too long (max 500 characters)")
             return redirect("/new_event")
 
         selected_feature_ids = request.form.getlist("feature_ids")
